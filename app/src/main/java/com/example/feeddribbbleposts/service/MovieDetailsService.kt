@@ -1,20 +1,18 @@
 package com.example.feeddribbbleposts.service
 
 import android.os.AsyncTask
-import com.example.feeddribbbleposts.model.Movie
+import com.example.feeddribbbleposts.model.MovieDetails
 import com.google.gson.Gson
-import java.io.IOException
 import java.net.HttpURLConnection
-import java.net.MalformedURLException
 import java.net.URL
 
-class MovieDetailsService(private val title: String) : AsyncTask<Void, Void, Movie>() {
+class MovieDetailsService(private val imdbID: String) : AsyncTask<Void, Void, MovieDetails>() {
 
-    override fun doInBackground(vararg params: Void?): Movie {
+    override fun doInBackground(vararg params: Void?): MovieDetails {
         var resposta = ""
 
         try {
-            val url = URL("http://www.omdbapi.com/?t=joker&apikey=e2a2df13")
+            val url = URL("http://www.omdbapi.com/?i=$imdbID&apikey=e2a2df13")
 
             val connection = url.openConnection() as HttpURLConnection
             connection.requestMethod = "GET"
@@ -26,11 +24,9 @@ class MovieDetailsService(private val title: String) : AsyncTask<Void, Void, Mov
             connection.connect()
 
             resposta = url.readText()
-        } catch (e: MalformedURLException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
-        return Gson().fromJson<Movie>(resposta, Movie::class.java)
+        return Gson().fromJson<MovieDetails>(resposta, MovieDetails::class.java)
     }
 }

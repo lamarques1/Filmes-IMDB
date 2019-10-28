@@ -2,7 +2,7 @@ package com.example.feeddribbbleposts.service
 
 import android.os.AsyncTask
 import android.util.Log
-import com.example.feeddribbbleposts.model.Movie
+import com.example.feeddribbbleposts.model.MovieDetails
 import java.lang.StringBuilder
 import com.google.gson.Gson
 import java.io.IOException
@@ -11,9 +11,9 @@ import java.net.MalformedURLException
 import java.net.URL
 import java.util.*
 
-class HttpService(private val titulo: String) : AsyncTask<Void, Void, Movie>() {
+class HttpService(private val titulo: String) : AsyncTask<Void, Void, MovieDetails>() {
 
-    override fun doInBackground(vararg params: Void?): Movie {
+    override fun doInBackground(vararg params: Void?): MovieDetails {
         val resposta = StringBuilder()
 
         if (!titulo.isEmpty()){
@@ -39,6 +39,6 @@ class HttpService(private val titulo: String) : AsyncTask<Void, Void, Movie>() {
             }
         }
 
-        return Gson().fromJson<Movie>(resposta.toString(), Movie::class.java)
+        return Gson().fromJson<MovieDetails>(resposta.toString(), MovieDetails::class.java)
     }
 }

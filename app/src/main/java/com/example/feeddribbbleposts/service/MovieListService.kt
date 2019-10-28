@@ -1,14 +1,10 @@
 package com.example.feeddribbbleposts.service
 
 import android.os.AsyncTask
-import com.example.feeddribbbleposts.model.Movie
+import android.widget.ProgressBar
 import com.example.feeddribbbleposts.model.MovieList
 import com.google.gson.Gson
-import com.google.gson.JsonSyntaxException
-import java.io.IOException
-import java.lang.Exception
 import java.net.HttpURLConnection
-import java.net.MalformedURLException
 import java.net.URL
 
 class MovieListService(private val title: String) : AsyncTask<Void, Void, MovieList>() {
@@ -25,15 +21,13 @@ class MovieListService(private val title: String) : AsyncTask<Void, Void, MovieL
             connection.setRequestProperty("Content-type", "application/json")
             connection.setRequestProperty("Accept", "application/json")
             connection.doOutput = true
-            connection.connectTimeout = 15000
+            connection.connectTimeout = 5000
             connection.connect()
 
             resposta = url.readText()
-        } catch (e: MalformedURLException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
-        return Gson().fromJson<MovieList>(resposta, MovieList::class.java)
+        return Gson().fromJson(resposta, MovieList::class.java)
     }
 }

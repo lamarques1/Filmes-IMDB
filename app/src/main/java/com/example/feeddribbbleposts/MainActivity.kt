@@ -5,15 +5,17 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import com.example.feeddribbbleposts.service.MovieDetailsService
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.feeddribbbleposts.adapter.MovieAdapter
 import com.example.feeddribbbleposts.service.MovieListService
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var etTitulo : EditText
-    private lateinit var tvResult : TextView
-    private lateinit var btnBusca : Button
+    private lateinit var etTitle : EditText
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var btnSearch : Button
+    private lateinit var adapter : MovieAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,19 +24,22 @@ class MainActivity : AppCompatActivity() {
         initViews()
         initListeners()
     }
-
     private fun initViews() {
-        etTitulo = findViewById(R.id.etTitulo)
-        tvResult = findViewById(R.id.tvResult)
-        btnBusca = findViewById(R.id.btnBusca)
+        etTitle = findViewById(R.id.etTitle)
+        btnSearch = findViewById(R.id.btnSearch)
+        recyclerView = findViewById(R.id.recyclerView)
     }
 
     private fun initListeners() {
-        btnBusca.setOnClickListener {
-            val retorno = MovieListService(etTitulo.text.toString()).execute().get()
+        btnSearch.setOnClickListener {
+            val retorno = MovieListService(etTitle.text.toString()).execute().get()
 
-            tvResult.visibility = View.VISIBLE
-            tvResult.text = retorno.totalResults.toString()
+            recyclerView.visibility = View.VISIBLE
+            adapter = MovieAdapter(applicationContext, retorno.movies)
+            recyclerView.adapter = adapter
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            recyclerView.setOnClickListener({
+            })
 
         }
     }
