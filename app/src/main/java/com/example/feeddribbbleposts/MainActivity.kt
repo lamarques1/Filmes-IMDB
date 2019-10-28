@@ -38,8 +38,7 @@ class MainActivity : AppCompatActivity() {
             adapter = MovieAdapter(applicationContext, retorno.movies)
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(this)
-            recyclerView.setOnClickListener({
-            })
+
 
         }
     }
