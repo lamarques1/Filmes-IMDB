@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".moviedetails.MovieDetailsActivity"></activity>
-        <activity android:name=".movielist.MainActivity">
+        <activity android:name=".moviedetails.MovieDetailsView"></activity>
+        <activity android:name=".movielist.MovieListView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

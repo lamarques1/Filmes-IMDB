@@ -24,15 +24,13 @@ class MovieListService(private val title: String) : AsyncTask<Void, Void, MovieL
                 connection.doOutput = true
                 connection.connectTimeout = 5000
                 connection.connect()
+
                 resposta = url.readText()
-
-                return Gson().fromJson(resposta, MovieList::class.java)
-
+                connection.disconnect()
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-
         }
-        return null
+        return Gson().fromJson(resposta, MovieList::class.java)
     }
 }

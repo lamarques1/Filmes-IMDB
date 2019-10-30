@@ -30,7 +30,7 @@ data class MovieDetails (
 	@SerializedName("Awards") val awards : String,
 	@SerializedName("Poster") val poster : String,
 	@SerializedName("Ratings") val ratings : List<Ratings>,
-	@SerializedName("Metascore") val metascore : Int,
+	@SerializedName("Metascore") val metascore : String,
 	@SerializedName("imdbRating") val imdbRating : Double,
 	@SerializedName("imdbVotes") val imdbVotes : String,
 	@SerializedName("imdbID") val imdbID : String,

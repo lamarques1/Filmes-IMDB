@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.feeddribbbleposts.R
-import com.example.feeddribbbleposts.moviedetails.MovieDetailsActivity
+import com.example.feeddribbbleposts.moviedetails.MovieDetailsView
 import com.example.feeddribbbleposts.movielist.model.Movie
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_filme.view.*
@@ -34,14 +34,14 @@ class MovieListAdapter (private val context: Context,
         holder.bindView(movie)
 
         holder.itemView.setOnClickListener {
-            val detailsIntent = Intent(context, MovieDetailsActivity::class.java)
+            val detailsIntent = Intent(context, MovieDetailsView::class.java)
             detailsIntent.putExtra("imdbID", movies[position].imdbID)
             context.startActivity(detailsIntent)
             Toast.makeText(context, movies[position].title, Toast.LENGTH_SHORT).show()
         }
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(movie: Movie){
             itemView.visibility = View.GONE
 

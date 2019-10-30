@@ -25,6 +25,7 @@ class MovieDetailsService(private val imdbID: String) : AsyncTask<Void, Void, Mo
                 connection.connect()
 
                 resposta = url.readText()
+                connection.disconnect()
             } catch (e: Exception) {
                 e.printStackTrace()
             }

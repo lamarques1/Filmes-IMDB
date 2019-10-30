@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Feed Dribbble Posts</string>
+    <string name="movie_title">Loren Ipson</string>
+    <string name="movie_year">2019</string>
+    <string name="movie_runtime">111 min</string>
+    <string name="movie_genre">Genre 1, Genre 2, Genre 3 </string>
+    <string name="movie_plot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fringilla tincidunt varius. Nullam semper viverra tellus, sit amet eleifend elit interdum eget. Nulla venenatis lorem aliquet euismod posuere. Mauris a convallis ipsum, eu convallis nisl. Aenean scelerisque risus et tellus fringilla maximus.</string>
+    <string name="director">Director: </string>
+    <string name="movie_director">Director 1</string>
+    <string name="writers">Writers: </string>
+    <string name="movie_writers">Writer 1, Writer 2</string>
+    <string name="actors">Actors: </string>
+    <string name="movie_actors">Actor 1, Actor 2, Actor 3, Actor 4, Actor 5</string>
+    <string name="placeholder_search_movie">Digite o título do filme</string>
+    <string name="btn_search">Buscar</string>
+    <string name="plot">Plot</string>
+    <string name="ratings">Ratings</string>
 </resources>
