@@ -7,11 +7,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.feeddribbbleposts.R
 import com.example.feeddribbbleposts.moviedetails.adapter.MovieDetailsAdapter
 import com.example.feeddribbbleposts.moviedetails.model.MovieDetails
+import com.example.feeddribbbleposts.moviedetails.service.MovieDetailsCallback
 import com.example.feeddribbbleposts.moviedetails.service.MovieDetailsService
 import com.squareup.picasso.Picasso
 
@@ -46,7 +48,16 @@ class MovieDetailsView : AppCompatActivity(), MovieDetailsContract.View {
         setPresenter()
         initViews()
 
-        presenter.onLoadMovieDetails(imdbID)
+        presenter.onLoadMovieDetails(imdbID, object : MovieDetailsCallback{
+            override fun onLoaded(result: MovieDetails) {
+                displayMovieDetails(result)
+            }
+
+            override fun onError(error: String) {
+                displayErrorMessage(error)
+            }
+
+        })
     }
 
     override fun setPresenter() {
@@ -88,5 +99,9 @@ class MovieDetailsView : AppCompatActivity(), MovieDetailsContract.View {
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = MovieDetailsAdapter(applicationContext, movie.ratings)
         recyclerView.adapter = adapter
+    }
+
+    override fun displayErrorMessage(error: String) {
+        Toast.makeText(this, error, Toast.LENGTH_LONG).show()
     }
 }

@@ -37,7 +37,6 @@ class MovieListAdapter (private val context: Context,
             val detailsIntent = Intent(context, MovieDetailsView::class.java)
             detailsIntent.putExtra("imdbID", movies[position].imdbID)
             context.startActivity(detailsIntent)
-            Toast.makeText(context, movies[position].title, Toast.LENGTH_SHORT).show()
         }
     }
 

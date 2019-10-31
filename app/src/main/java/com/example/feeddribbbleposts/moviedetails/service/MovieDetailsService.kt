@@ -12,12 +12,11 @@ class MovieDetailsService(private val imdbID: String) : AsyncTask<Void, Void, Mo
         var resposta = ""
 
         if (!imdbID.isEmpty()) {
+            val url = URL("http://www.omdbapi.com/?i=$imdbID&apikey=e2a2df13")
+            val connection = url.openConnection() as HttpURLConnection
+
             try {
-                val url = URL("http://www.omdbapi.com/?i=$imdbID&apikey=e2a2df13")
-
-                val connection = url.openConnection() as HttpURLConnection
                 connection.requestMethod = "GET"
-
                 connection.setRequestProperty("Content-type", "application/json")
                 connection.setRequestProperty("Accept", "application/json")
                 connection.doOutput = true
@@ -25,9 +24,11 @@ class MovieDetailsService(private val imdbID: String) : AsyncTask<Void, Void, Mo
                 connection.connect()
 
                 resposta = url.readText()
-                connection.disconnect()
+
             } catch (e: Exception) {
                 e.printStackTrace()
+            } finally {
+                connection.disconnect()
             }
         }
         return Gson().fromJson<MovieDetails>(resposta, MovieDetails::class.java)

@@ -1,15 +1,18 @@
 package com.example.feeddribbbleposts.movielist
 
+import android.content.Context
 import com.example.feeddribbbleposts.movielist.model.Movie
+import com.example.feeddribbbleposts.movielist.service.MovieListCallback
 
 class MovieListContract {
     interface View {
-        fun displayMovies(movies: List<Movie> )
+        fun setPresenter(view : View)
         fun initViews()
         fun initListeners()
-        fun setPresenter(view : View)
+        fun displayMovies(movies : List<Movie>)
+        fun displayErrorMessage(error: String)
     }
     interface Presenter{
-        fun onLoadMovies(title: String)
+        fun onLoadMovies(title: String, movieListCallback: MovieListCallback)
     }
 }

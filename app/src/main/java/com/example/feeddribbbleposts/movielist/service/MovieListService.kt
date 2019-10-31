@@ -1,7 +1,6 @@
 package com.example.feeddribbbleposts.movielist.service
 
 import android.os.AsyncTask
-import android.util.Log
 import com.example.feeddribbbleposts.movielist.model.MovieList
 import com.google.gson.Gson
 import java.net.HttpURLConnection
@@ -13,12 +12,11 @@ class MovieListService(private val title: String) : AsyncTask<Void, Void, MovieL
         var resposta = ""
 
         if (!title.isEmpty()) {
+            val url = URL("http://www.omdbapi.com/?s=$title&apikey=e2a2df13")
+            val connection = url.openConnection() as HttpURLConnection
+
             try {
-                val url = URL("http://www.omdbapi.com/?s=$title&apikey=e2a2df13")
-
-                val connection = url.openConnection() as HttpURLConnection
                 connection.requestMethod = "GET"
-
                 connection.setRequestProperty("Content-type", "application/json")
                 connection.setRequestProperty("Accept", "application/json")
                 connection.doOutput = true
@@ -26,11 +24,14 @@ class MovieListService(private val title: String) : AsyncTask<Void, Void, MovieL
                 connection.connect()
 
                 resposta = url.readText()
-                connection.disconnect()
+
             } catch (e: Exception) {
                 e.printStackTrace()
+            } finally {
+                connection.disconnect()
             }
         }
+
         return Gson().fromJson(resposta, MovieList::class.java)
     }
 }
