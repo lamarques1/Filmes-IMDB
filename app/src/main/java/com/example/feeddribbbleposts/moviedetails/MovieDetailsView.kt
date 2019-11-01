@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +25,7 @@ class MovieDetailsView : AppCompatActivity(), MovieDetailsContract.View {
     private lateinit var txtTitle : TextView
     private lateinit var txtYear : TextView
     private lateinit var txtRunTime : TextView
+    private lateinit var ratingBar : RatingBar
     private lateinit var txtGenre : TextView
     private lateinit var txtPlot : TextView
     private lateinit var txtDirector : TextView
@@ -68,6 +70,7 @@ class MovieDetailsView : AppCompatActivity(), MovieDetailsContract.View {
         txtTitle = findViewById(R.id.txtTitle)
         txtYear = findViewById(R.id.txtYear)
         txtRunTime = findViewById(R.id.txtRunTime)
+        ratingBar = findViewById(R.id.ratingBar)
         txtGenre = findViewById(R.id.txtGenre)
         txtPlot = findViewById(R.id.txtPlot)
         txtDirector = findViewById(R.id.txtDirector)
@@ -81,6 +84,7 @@ class MovieDetailsView : AppCompatActivity(), MovieDetailsContract.View {
         txtTitle.text = movie.title
         txtYear.text = movie.year
         txtRunTime.text = movie.runtime
+        ratingBar.rating = (movie.imdbRating/2).toFloat()
         txtGenre.text = movie.genre
         txtPlot.text = movie.plot
         txtDirector.text = movie.director

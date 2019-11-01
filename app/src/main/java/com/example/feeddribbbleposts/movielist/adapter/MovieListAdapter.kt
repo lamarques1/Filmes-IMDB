@@ -14,6 +14,10 @@ import com.example.feeddribbbleposts.moviedetails.MovieDetailsView
 import com.example.feeddribbbleposts.movielist.model.Movie
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_filme.view.*
+import kotlinx.android.synthetic.main.item_filme.view.imgPoster
+import kotlinx.android.synthetic.main.item_filme.view.txtTitle
+import kotlinx.android.synthetic.main.item_filme.view.txtYear
+import kotlinx.android.synthetic.main.item_filme2.view.*
 
 class MovieListAdapter (private val context: Context,
                         private val movies: List<Movie>)
@@ -21,7 +25,7 @@ class MovieListAdapter (private val context: Context,
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_filme, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_filme2, parent, false)
         return ViewHolder(view)
     }
 
@@ -45,12 +49,14 @@ class MovieListAdapter (private val context: Context,
             itemView.visibility = View.GONE
 
             val title = itemView.txtTitle
+            val type = itemView.txtType
             val year = itemView.txtYear
             val poster = itemView.imgPoster
             val posterUri = Uri.parse(movie.poster)
             val colorDrawable = ColorDrawable(0xFFFFFF)
 
             title.text = movie.title
+            type.text = movie.type
             year.text = movie.year
             Picasso.get()
                 .load(posterUri)
