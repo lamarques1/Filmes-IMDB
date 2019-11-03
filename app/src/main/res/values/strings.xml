@@ -16,4 +16,7 @@
     <string name="plot">Plot</string>
     <string name="ratings">Ratings</string>
     <string name="movie_type">type</string>
+    <string name="movie_list_activity_title">Filmes IMDB</string>
+    <string name="button_search">Button Search</string>
+    <string name="movie_poster">Movie Poster</string>
 </resources>

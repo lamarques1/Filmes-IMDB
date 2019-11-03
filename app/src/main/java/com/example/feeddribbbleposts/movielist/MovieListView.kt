@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.feeddribbbleposts.R
@@ -21,7 +18,7 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
 
     private lateinit var etTitle : EditText
     private lateinit var recyclerView: RecyclerView
-    private lateinit var btnSearch : Button
+    private lateinit var btnSearch : ImageView
     private lateinit var adapter : MovieListAdapter
     private lateinit var presenter : MovieListPresenter
 

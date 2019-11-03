@@ -6,5 +6,5 @@
     <color name="colorAccent">#AA2A05</color>
     <color name="colorBackground">#222222</color>
     <color name="colorSectionLine">#535353</color>
-    <color name="colorSurface"><color name="colorBackground">#303030</color></color>
+    <color name="colorSurface">#303030</color>
 </resources>

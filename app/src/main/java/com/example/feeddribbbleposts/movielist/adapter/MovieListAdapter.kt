@@ -7,7 +7,6 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.feeddribbbleposts.R
 import com.example.feeddribbbleposts.moviedetails.MovieDetailsView
@@ -17,7 +16,6 @@ import kotlinx.android.synthetic.main.item_filme.view.*
 import kotlinx.android.synthetic.main.item_filme.view.imgPoster
 import kotlinx.android.synthetic.main.item_filme.view.txtTitle
 import kotlinx.android.synthetic.main.item_filme.view.txtYear
-import kotlinx.android.synthetic.main.item_filme2.view.*
 
 class MovieListAdapter (private val context: Context,
                         private val movies: List<Movie>)
@@ -25,7 +23,7 @@ class MovieListAdapter (private val context: Context,
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_filme2, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_filme, parent, false)
         return ViewHolder(view)
     }
 

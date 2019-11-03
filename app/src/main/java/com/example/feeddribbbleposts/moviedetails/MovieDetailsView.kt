@@ -43,7 +43,7 @@ class MovieDetailsView : AppCompatActivity(), MovieDetailsContract.View {
         setContentView(R.layout.activity_movie_details)
         supportActionBar!!.hide()
 
-        imdbID = intent.getStringExtra("imdbID")
+        imdbID = intent.getStringExtra("imdbID")!!
 
         retorno = MovieDetailsService(imdbID).execute().get()
 
