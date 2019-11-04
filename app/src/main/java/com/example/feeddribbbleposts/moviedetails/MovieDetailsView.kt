@@ -21,7 +21,6 @@ import com.squareup.picasso.Picasso
 class MovieDetailsView : AppCompatActivity(), MovieDetailsContract.View {
 
     private lateinit var imdbID : String
-    private lateinit var retorno : MovieDetails
     private lateinit var txtTitle : TextView
     private lateinit var txtYear : TextView
     private lateinit var txtRunTime : TextView
@@ -44,8 +43,6 @@ class MovieDetailsView : AppCompatActivity(), MovieDetailsContract.View {
         supportActionBar!!.hide()
 
         imdbID = intent.getStringExtra("imdbID")!!
-
-        retorno = MovieDetailsService(imdbID).execute().get()
 
         setPresenter()
         initViews()
