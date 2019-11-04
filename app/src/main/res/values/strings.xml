@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Feed Dribbble Posts</string>
+    <string name="app_name">Filmes IMDB</string>
     <string name="movie_title">Loren Ipson</string>
     <string name="movie_year">2019</string>
     <string name="movie_runtime">111 min</string>
