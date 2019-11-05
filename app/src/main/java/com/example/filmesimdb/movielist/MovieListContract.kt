@@ -1,8 +1,8 @@
-package com.example.feeddribbbleposts.movielist
+package com.example.filmesimdb.movielist
 
 import android.content.Context
-import com.example.feeddribbbleposts.movielist.model.Movie
-import com.example.feeddribbbleposts.movielist.service.MovieListCallback
+import com.example.filmesimdb.movielist.model.Movie
+import com.example.filmesimdb.movielist.service.MovieListCallback
 
 class MovieListContract {
     interface View {

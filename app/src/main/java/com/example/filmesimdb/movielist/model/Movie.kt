@@ -1,4 +1,4 @@
-package com.example.feeddribbbleposts.movielist.model
+package com.example.filmesimdb.movielist.model
 import com.google.gson.annotations.SerializedName
 
 data class Movie (

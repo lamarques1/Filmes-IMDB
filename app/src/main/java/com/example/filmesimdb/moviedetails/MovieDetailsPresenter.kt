@@ -1,9 +1,10 @@
-package com.example.feeddribbbleposts.moviedetails
+package com.example.filmesimdb.moviedetails
 
-import com.example.feeddribbbleposts.moviedetails.service.MovieDetailsCallback
-import com.example.feeddribbbleposts.moviedetails.service.MovieDetailsService
+import com.example.filmesimdb.moviedetails.service.MovieDetailsCallback
+import com.example.filmesimdb.moviedetails.service.MovieDetailsService
 
-class MovieDetailsPresenter(val view: MovieDetailsContract.View) : MovieDetailsContract.Presenter {
+class MovieDetailsPresenter(val view: MovieDetailsContract.View) :
+    MovieDetailsContract.Presenter {
 
     override fun onLoadMovieDetails(imdbID: String, movieDetailsCallback: MovieDetailsCallback) {
         val repository = MovieDetailsService(imdbID).execute().get()

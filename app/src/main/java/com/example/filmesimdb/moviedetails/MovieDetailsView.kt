@@ -1,4 +1,4 @@
-package com.example.feeddribbbleposts.moviedetails
+package com.example.filmesimdb.moviedetails
 
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -11,14 +11,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.feeddribbbleposts.R
-import com.example.feeddribbbleposts.moviedetails.adapter.MovieDetailsAdapter
-import com.example.feeddribbbleposts.moviedetails.model.MovieDetails
-import com.example.feeddribbbleposts.moviedetails.service.MovieDetailsCallback
-import com.example.feeddribbbleposts.moviedetails.service.MovieDetailsService
+import com.example.filmesimdb.R
+import com.example.filmesimdb.moviedetails.adapter.MovieDetailsAdapter
+import com.example.filmesimdb.moviedetails.model.MovieDetails
+import com.example.filmesimdb.moviedetails.service.MovieDetailsCallback
 import com.squareup.picasso.Picasso
 
-class MovieDetailsView : AppCompatActivity(), MovieDetailsContract.View {
+class MovieDetailsView : AppCompatActivity(),
+    MovieDetailsContract.View {
 
     private lateinit var imdbID : String
     private lateinit var txtTitle : TextView
@@ -47,7 +47,8 @@ class MovieDetailsView : AppCompatActivity(), MovieDetailsContract.View {
         setPresenter()
         initViews()
 
-        presenter.onLoadMovieDetails(imdbID, object : MovieDetailsCallback{
+        presenter.onLoadMovieDetails(imdbID, object :
+            MovieDetailsCallback {
             override fun onLoaded(result: MovieDetails) {
                 displayMovieDetails(result)
             }
@@ -98,7 +99,10 @@ class MovieDetailsView : AppCompatActivity(), MovieDetailsContract.View {
 
         recyclerView.visibility = View.VISIBLE
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = MovieDetailsAdapter(applicationContext, movie.ratings)
+        adapter = MovieDetailsAdapter(
+            applicationContext,
+            movie.ratings
+        )
         recyclerView.adapter = adapter
     }
 

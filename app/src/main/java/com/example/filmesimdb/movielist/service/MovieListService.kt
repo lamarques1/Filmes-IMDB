@@ -1,7 +1,7 @@
-package com.example.feeddribbbleposts.movielist.service
+package com.example.filmesimdb.movielist.service
 
 import android.os.AsyncTask
-import com.example.feeddribbbleposts.movielist.model.MovieList
+import com.example.filmesimdb.movielist.model.MovieList
 import com.google.gson.Gson
 import java.net.HttpURLConnection
 import java.net.URL

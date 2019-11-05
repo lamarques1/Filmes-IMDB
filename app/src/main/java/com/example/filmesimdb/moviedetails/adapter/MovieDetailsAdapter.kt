@@ -1,12 +1,12 @@
-package com.example.feeddribbbleposts.moviedetails.adapter
+package com.example.filmesimdb.moviedetails.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.feeddribbbleposts.R
-import com.example.feeddribbbleposts.moviedetails.model.Ratings
+import com.example.filmesimdb.R
+import com.example.filmesimdb.moviedetails.model.Ratings
 import kotlinx.android.synthetic.main.item_rating.view.*
 
 class MovieDetailsAdapter(private val context: Context,

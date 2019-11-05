@@ -1,6 +1,6 @@
-package com.example.feeddribbbleposts.moviedetails.service
+package com.example.filmesimdb.moviedetails.service
 
-import com.example.feeddribbbleposts.moviedetails.model.MovieDetails
+import com.example.filmesimdb.moviedetails.model.MovieDetails
 
 interface MovieDetailsCallback {
     fun onLoaded(result : MovieDetails)

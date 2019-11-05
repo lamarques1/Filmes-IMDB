@@ -1,10 +1,11 @@
-package com.example.feeddribbbleposts.movielist
+package com.example.filmesimdb.movielist
 
-import com.example.feeddribbbleposts.movielist.service.MovieListCallback
-import com.example.feeddribbbleposts.movielist.service.MovieListService
+import com.example.filmesimdb.movielist.service.MovieListCallback
+import com.example.filmesimdb.movielist.service.MovieListService
 import java.lang.Exception
 
-class MovieListPresenter(val view : MovieListContract.View) : MovieListContract.Presenter {
+class MovieListPresenter(val view : MovieListContract.View) :
+    MovieListContract.Presenter {
 
     override fun onLoadMovies(title: String, movieListCallback: MovieListCallback) {
         try {

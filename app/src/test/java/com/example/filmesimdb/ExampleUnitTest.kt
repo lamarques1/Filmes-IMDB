@@ -1,4 +1,4 @@
-package com.example.feeddribbbleposts
+package com.example.filmesimdb
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.example.feeddribbbleposts.movielist.adapter
+package com.example.filmesimdb.movielist.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -8,9 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.feeddribbbleposts.R
-import com.example.feeddribbbleposts.moviedetails.MovieDetailsView
-import com.example.feeddribbbleposts.movielist.model.Movie
+import com.example.filmesimdb.R
+import com.example.filmesimdb.moviedetails.MovieDetailsView
+import com.example.filmesimdb.movielist.model.Movie
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_filme.view.*
 import kotlinx.android.synthetic.main.item_filme.view.imgPoster

@@ -1,6 +1,6 @@
-package com.example.feeddribbbleposts.movielist.service
+package com.example.filmesimdb.movielist.service
 
-import com.example.feeddribbbleposts.movielist.model.Movie
+import com.example.filmesimdb.movielist.model.Movie
 
 interface MovieListCallback {
     fun onLoaded(result : List<Movie>)

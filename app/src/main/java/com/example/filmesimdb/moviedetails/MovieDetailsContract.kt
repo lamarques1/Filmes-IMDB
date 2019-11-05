@@ -1,7 +1,7 @@
-package com.example.feeddribbbleposts.moviedetails
+package com.example.filmesimdb.moviedetails
 
-import com.example.feeddribbbleposts.moviedetails.model.MovieDetails
-import com.example.feeddribbbleposts.moviedetails.service.MovieDetailsCallback
+import com.example.filmesimdb.moviedetails.model.MovieDetails
+import com.example.filmesimdb.moviedetails.service.MovieDetailsCallback
 
 class MovieDetailsContract {
     interface View{
