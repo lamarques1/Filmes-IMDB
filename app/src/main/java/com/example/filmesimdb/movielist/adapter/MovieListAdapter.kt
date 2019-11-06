@@ -35,6 +35,9 @@ class MovieListAdapter (private val context: Context,
         val movie = movies[position]
         holder.bindView(movie)
 
+        /**
+         * Ao clicar no item, inicia a Activity de detalhes com o seu id
+         */
         holder.itemView.setOnClickListener {
             val detailsIntent = Intent(context, MovieDetailsView::class.java)
             detailsIntent.putExtra("imdbID", movies[position].imdbID)

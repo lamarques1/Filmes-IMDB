@@ -1,23 +1,28 @@
 package com.example.filmesimdb.moviedetails
 
-import com.example.filmesimdb.moviedetails.service.MovieDetailsCallback
-import com.example.filmesimdb.moviedetails.service.MovieDetailsService
+import com.example.filmesimdb.moviedetails.model.MovieDetails
+import com.example.filmesimdb.service.MovieServiceApi
+import com.example.filmesimdb.service.MovieServiceImpl
+
 
 class MovieDetailsPresenter(val view: MovieDetailsContract.View) :
     MovieDetailsContract.Presenter {
 
-    override fun onLoadMovieDetails(imdbID: String, movieDetailsCallback: MovieDetailsCallback) {
-        val repository = MovieDetailsService(imdbID).execute().get()
-        try {
-            if (repository.response){
-                movieDetailsCallback.onLoaded(repository)
+    /**
+     * Busca os detalhes de um filme especifico no serviço e envia para a view.
+     * @param imdbID - Id do filme
+     */
+    override fun onLoadMovieDetails(imdbID: String) {
+        val webCliente = MovieServiceImpl()
+        webCliente.getMovieDetails(imdbID, object : MovieServiceApi.MovieCallback<MovieDetails> {
+            override fun onLoaded(result: MovieDetails) {
+                view.displayMovieDetails(result)
             }
-            else{
-                movieDetailsCallback.onError("Não foi possivel carregar o filme!")
+
+            override fun onError(errorId: Int) {
+                view.displayErrorMessage(errorId)
             }
-        }catch (e : Exception){
-            e.printStackTrace()
-        }
+        })
 
     }
 }

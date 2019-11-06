@@ -1,24 +1,29 @@
 package com.example.filmesimdb.movielist
 
-import com.example.filmesimdb.movielist.service.MovieListCallback
-import com.example.filmesimdb.movielist.service.MovieListService
-import java.lang.Exception
+import com.example.filmesimdb.movielist.model.MovieList
+import com.example.filmesimdb.service.MovieServiceApi
+import com.example.filmesimdb.service.MovieServiceImpl
 
 class MovieListPresenter(val view : MovieListContract.View) :
     MovieListContract.Presenter {
 
-    override fun onLoadMovies(title: String, movieListCallback: MovieListCallback) {
-        try {
-            val repository = MovieListService(title).execute().get()
+    /**
+     * Busca a lista de filmes no serviço e envia para a view
+     * @param title - Filtro da busca
+     */
+    override fun onLoadMovies(title: String) {
+        if (title.trim().isNotEmpty()){
+            val webCliente = MovieServiceImpl()
+            webCliente.getMovieList(title, object : MovieServiceApi.MovieCallback<MovieList> {
+                override fun onLoaded(result: MovieList) {
+                    view.displayMovies(result.movies)
+                }
 
-            if (repository.response){
-                movieListCallback.onLoaded(repository.movies)
-            }
-            else{
-                movieListCallback.onError("Filme não encontrado!")
-            }
-        }catch (e : Exception){
-            e.printStackTrace()
+                override fun onError(errorId: Int) {
+                    view.displayErrorMessage(errorId)
+                }
+
+            })
         }
     }
 }

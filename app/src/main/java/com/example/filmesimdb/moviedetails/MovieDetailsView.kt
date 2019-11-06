@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.filmesimdb.R
 import com.example.filmesimdb.moviedetails.adapter.MovieDetailsAdapter
 import com.example.filmesimdb.moviedetails.model.MovieDetails
-import com.example.filmesimdb.moviedetails.service.MovieDetailsCallback
 import com.squareup.picasso.Picasso
 
 class MovieDetailsView : AppCompatActivity(),
@@ -47,17 +46,7 @@ class MovieDetailsView : AppCompatActivity(),
         setPresenter()
         initViews()
 
-        presenter.onLoadMovieDetails(imdbID, object :
-            MovieDetailsCallback {
-            override fun onLoaded(result: MovieDetails) {
-                displayMovieDetails(result)
-            }
-
-            override fun onError(error: String) {
-                displayErrorMessage(error)
-            }
-
-        })
+        presenter.onLoadMovieDetails(imdbID)
     }
 
     override fun setPresenter() {
@@ -78,6 +67,9 @@ class MovieDetailsView : AppCompatActivity(),
         recyclerView = findViewById(R.id.recyclerViewRatings)
     }
 
+    /**
+     * Exibe os detalhes do filme recebidos do presenter
+     */
     override fun displayMovieDetails(movie : MovieDetails) {
         txtTitle.text = movie.title
         txtYear.text = movie.year
@@ -106,7 +98,11 @@ class MovieDetailsView : AppCompatActivity(),
         recyclerView.adapter = adapter
     }
 
-    override fun displayErrorMessage(error: String) {
-        Toast.makeText(this, error, Toast.LENGTH_LONG).show()
+    /**
+     * Caso a busca falhe, exibe uma mensagem de erro
+     * @param errorId - Id da string de erro para exibição
+     */
+    override fun displayErrorMessage(errorId: Int) {
+        Toast.makeText(this, errorId, Toast.LENGTH_LONG).show()
     }
 }

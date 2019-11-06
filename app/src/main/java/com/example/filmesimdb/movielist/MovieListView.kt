@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.filmesimdb.R
 import com.example.filmesimdb.movielist.adapter.MovieListAdapter
 import com.example.filmesimdb.movielist.model.Movie
-import com.example.filmesimdb.movielist.service.MovieListCallback
 
 class MovieListView : AppCompatActivity(), MovieListContract.View {
 
@@ -39,23 +38,18 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
         recyclerView = findViewById(R.id.recyclerViewMovies)
     }
 
+    /**
+     * Ao pesquisar, carrega o resultado por meio do presenter
+     */
     override fun initListeners() {
         btnSearch.setOnClickListener {
-
-            presenter.onLoadMovies(etTitle.text.toString(), object :
-                MovieListCallback {
-                override fun onLoaded(result: List<Movie>) {
-                    displayMovies(result)
-                }
-
-                override fun onError(error: String) {
-                    displayErrorMessage(error)
-                }
-
-            } )
+            presenter.onLoadMovies(etTitle.text.toString())
         }
     }
 
+    /**
+     * Exibe a lista de filmes recebida do presenter
+     */
     override fun displayMovies(movies: List<Movie>) {
         recyclerView.visibility = View.VISIBLE
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -64,7 +58,12 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
         recyclerView.adapter = adapter
     }
 
-    override fun displayErrorMessage(error: String) {
-        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+    /**
+     * Caso a busca falhe, exibe uma mensagem de erro
+     * @param errorId - Id da string de erro para exibição
+     */
+    override fun displayErrorMessage(errorId: Int) {
+        Toast.makeText(this, errorId, Toast.LENGTH_SHORT).show()
     }
 }
+

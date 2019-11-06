@@ -46,7 +46,8 @@
                 android:text="@string/movie_type"
                 android:textColor="@color/colorDefaultText"
                 android:textSize="12sp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/txtYear"

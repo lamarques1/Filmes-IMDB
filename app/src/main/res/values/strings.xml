@@ -19,4 +19,9 @@
     <string name="movie_list_activity_title">Filmes IMDB</string>
     <string name="button_search">Button Search</string>
     <string name="movie_poster">Movie Poster</string>
+
+    <!-- Erros -->
+    <string name="erro_carregar_filmes">Erro ao carregar os filmes!</string>
+    <string name="erro_carregar_detalhes">Erro ao carregar os detalhes!</string>
+    <string name="erro_filme_nao_encontrado">Filme não encontrado!</string>
 </resources>
