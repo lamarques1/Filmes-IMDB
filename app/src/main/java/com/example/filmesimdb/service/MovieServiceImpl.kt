@@ -2,11 +2,12 @@ package com.example.filmesimdb.service
 
 import com.example.filmesimdb.R
 import com.example.filmesimdb.moviedetails.model.MovieDetails
+import com.example.filmesimdb.movielist.model.Movie
 import com.example.filmesimdb.movielist.model.MovieList
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.StringBuilder
+import java.lang.Exception
 
 class MovieServiceImpl : MovieServiceApi {
 
@@ -18,21 +19,25 @@ class MovieServiceImpl : MovieServiceApi {
      */
     override fun getMovieList(
         title: String,
-        callback: MovieServiceApi.MovieCallback<MovieList>
+        callback: MovieServiceApi.MovieCallback<List<Movie>>
     ) {
-        val callMovies = mRetrofit.list(title)
+        val callMovies = mRetrofit.list(title.trim())
         callMovies.enqueue(object: Callback<MovieList>{
             override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
-                val success = response.body()?.response
-                if (success!!){
-                    val movieList = response.body()
+                try {
+                    // recebe o json da resposta
+                    val result = response.body()
                     //Filtra o resultado para retornar apenas os filmes
-                    movieList!!.movies.map { it.type = "movie" }
-                    callback.onLoaded(movieList)
-                }else{
+                    val movieList = result!!.movies.filter { it.type == "movie" }
+
+                    if (movieList.isNotEmpty()){
+                        callback.onLoaded(movieList)
+                    }else{
+                        callback.onError(R.string.erro_filme_nao_encontrado)
+                    }
+                }catch (e : Exception){
                     callback.onError(R.string.erro_filme_nao_encontrado)
                 }
-
             }
 
             override fun onFailure(call: Call<MovieList>, t: Throwable) {
