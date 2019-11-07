@@ -14,6 +14,7 @@ class MovieListPresenter(val view : MovieListContract.View) :
 
     /**
      * Busca a lista de filmes no serviço e envia para a view
+     * A pagina é incrementada a cada busca
      * @param title - Filtro da busca
      */
     override fun onLoadMovies(title: String) {
@@ -34,6 +35,7 @@ class MovieListPresenter(val view : MovieListContract.View) :
                     PAGE += 1
                 }
 
+                // Caso não retorne nenhum filme na primeira pagina, envia uma mensagem de erro para a view
                 override fun onError(errorId: Int) {
                     if (PAGE == 1){
                         view.displayErrorMessage(errorId)

@@ -58,8 +58,11 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
             MovieListAdapter(applicationContext, movies)
         recyclerView.adapter = adapter
 
+        /**
+         * Scroll Infinito
+         * Ao chegar no fim da lista, realiza outra request com a pagina seguinte
+         */
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 adapter.setOnBottomReachedListener(object :
