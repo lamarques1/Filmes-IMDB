@@ -7,8 +7,11 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface RetrofitEndpoint {
+//    @GET("./?apikey=e2a2df13")
+//    fun list(@Query("s") title: String): Call<MovieList>
+
     @GET("./?apikey=e2a2df13")
-    fun list(@Query("s") title: String): Call<MovieList>
+    fun list(@Query("s") title: String, @Query("page") page: String, @Query("type") type : String): Call<MovieList>
 
     @GET("./?apikey=e2a2df13")
     fun details(@Query("i") imdbId: String): Call<MovieDetails>

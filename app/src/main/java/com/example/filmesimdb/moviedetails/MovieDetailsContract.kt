@@ -6,7 +6,7 @@ class MovieDetailsContract {
     interface View{
         fun initViews()
         fun displayMovieDetails(movie : MovieDetails)
-        fun displayErrorMessage(errorID : Int)
+        fun displayErrorMessage(errorId : Int)
         fun setPresenter()
     }
     interface Presenter{

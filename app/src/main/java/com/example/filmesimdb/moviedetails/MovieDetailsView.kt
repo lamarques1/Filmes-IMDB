@@ -5,10 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import android.widget.RatingBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmesimdb.R
@@ -30,6 +27,7 @@ class MovieDetailsView : AppCompatActivity(),
     private lateinit var txtWriter : TextView
     private lateinit var txtActors : TextView
     private lateinit var imgPoster : ImageView
+    private lateinit var layout : LinearLayout
 
     private lateinit var adapter : MovieDetailsAdapter
     private lateinit var recyclerView: RecyclerView
@@ -65,12 +63,16 @@ class MovieDetailsView : AppCompatActivity(),
         txtActors = findViewById(R.id.txtActors)
         imgPoster = findViewById(R.id.imgPoster)
         recyclerView = findViewById(R.id.recyclerViewRatings)
+        layout = findViewById(R.id.layout_movie_details)
     }
 
     /**
      * Exibe os detalhes do filme recebidos do presenter
      */
     override fun displayMovieDetails(movie : MovieDetails) {
+
+        layout.visibility = View.GONE
+
         txtTitle.text = movie.title
         txtYear.text = movie.year
         txtRunTime.text = movie.runtime
@@ -96,6 +98,8 @@ class MovieDetailsView : AppCompatActivity(),
             movie.ratings
         )
         recyclerView.adapter = adapter
+
+        layout.visibility = View.VISIBLE
     }
 
     /**
@@ -104,5 +108,8 @@ class MovieDetailsView : AppCompatActivity(),
      */
     override fun displayErrorMessage(errorId: Int) {
         Toast.makeText(this, errorId, Toast.LENGTH_LONG).show()
+        onBackPressed()
     }
+
+
 }

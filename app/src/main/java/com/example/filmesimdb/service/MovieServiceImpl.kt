@@ -19,19 +19,20 @@ class MovieServiceImpl : MovieServiceApi {
      */
     override fun getMovieList(
         title: String,
+        page: String,
         callback: MovieServiceApi.MovieCallback<List<Movie>>
     ) {
-        val callMovies = mRetrofit.list(title.trim())
+        val callMovies = mRetrofit.list(title, page, "movie")
         callMovies.enqueue(object: Callback<MovieList>{
             override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
                 try {
                     // recebe o json da resposta
                     val result = response.body()
-                    //Filtra o resultado para retornar apenas os filmes
-                    val movieList = result!!.movies.filter { it.type == "movie" }
 
-                    if (movieList.isNotEmpty()){
-                        callback.onLoaded(movieList)
+                    if (result?.movies?.isNotEmpty()!!){
+                        // Filtrar apenas filmes com poster
+                        val movies = result.movies.filter { it.poster != "N/A" }
+                        callback.onLoaded(movies, result.totalResults)
                     }else{
                         callback.onError(R.string.erro_filme_nao_encontrado)
                     }

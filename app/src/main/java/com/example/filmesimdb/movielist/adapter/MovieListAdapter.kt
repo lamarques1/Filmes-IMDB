@@ -18,14 +18,18 @@ import kotlinx.android.synthetic.main.item_filme.view.txtTitle
 import kotlinx.android.synthetic.main.item_filme.view.txtYear
 
 class MovieListAdapter (private val context: Context,
-                        private val movies: List<Movie>)
+                        private var movies: List<Movie>)
     : RecyclerView.Adapter<MovieListAdapter.ViewHolder>(){
+
+    private var onBottomReachedListener : OnBottomReachedListener? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_filme, parent, false)
         return ViewHolder(view)
     }
+
+
 
     override fun getItemCount(): Int {
         return movies.size
@@ -35,6 +39,10 @@ class MovieListAdapter (private val context: Context,
         val movie = movies[position]
         holder.bindView(movie)
 
+        if (position == movies.size - 1){
+            onBottomReachedListener?.onBottomReached(position)
+        }
+
         /**
          * Ao clicar no item, inicia a Activity de detalhes com o seu id
          */
@@ -43,6 +51,18 @@ class MovieListAdapter (private val context: Context,
             detailsIntent.putExtra("imdbID", movies[position].imdbID)
             context.startActivity(detailsIntent)
         }
+    }
+
+    fun setOnBottomReachedListener(onBottomReachedListener: OnBottomReachedListener) {
+
+        this.onBottomReachedListener = onBottomReachedListener
+    }
+
+    fun updateItems(newMovies: List<Movie>){
+        val finalList = ArrayList<Movie>()
+        finalList.addAll(movies)
+        finalList.addAll(newMovies)
+        movies = finalList
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -67,5 +87,11 @@ class MovieListAdapter (private val context: Context,
 
             itemView.visibility = View.VISIBLE
         }
+    }
+
+    interface OnBottomReachedListener {
+
+        fun onBottomReached(position: Int)
+
     }
 }

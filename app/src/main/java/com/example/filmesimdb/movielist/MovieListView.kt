@@ -43,6 +43,7 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
      */
     override fun initListeners() {
         btnSearch.setOnClickListener {
+            presenter.resetPage()
             presenter.onLoadMovies(etTitle.text.toString())
         }
     }
@@ -56,6 +57,23 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
         adapter =
             MovieListAdapter(applicationContext, movies)
         recyclerView.adapter = adapter
+
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                adapter.setOnBottomReachedListener(object :
+                    MovieListAdapter.OnBottomReachedListener {
+                    override fun onBottomReached(position: Int) {
+                        presenter.onLoadMovies(etTitle.text.toString())
+                    }
+                })
+            }
+        })
+    }
+
+    override fun getAdapter() : MovieListAdapter{
+        return adapter
     }
 
     /**

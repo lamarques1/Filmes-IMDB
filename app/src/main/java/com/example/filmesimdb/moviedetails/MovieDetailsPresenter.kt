@@ -22,6 +22,10 @@ class MovieDetailsPresenter(val view: MovieDetailsContract.View) :
             override fun onError(errorId: Int) {
                 view.displayErrorMessage(errorId)
             }
+
+            override fun onLoaded(result: MovieDetails, totalItems: Int) {
+                // Not implemented
+            }
         })
 
     }
