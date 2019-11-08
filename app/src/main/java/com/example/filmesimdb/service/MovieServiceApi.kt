@@ -16,7 +16,7 @@ interface MovieServiceApi {
 //    fun getMovieList(title: String, callback : MovieCallback<List<Movie>>)
 
     @GET("./?apikey=e2a2df13")
-    fun getMovieList(title: String, page: String, callback : MovieCallback<List<Movie>>)
+    fun getMovieList(title: String, page: String, type:String, callback : MovieCallback<List<Movie>>)
 
     @GET("./?apikey=e2a2df13")
     fun getMovieDetails(imdbId: String, callback : MovieCallback<MovieDetails>)

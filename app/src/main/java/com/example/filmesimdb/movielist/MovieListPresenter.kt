@@ -17,13 +17,13 @@ class MovieListPresenter(val view : MovieListContract.View) :
      * A pagina é incrementada a cada busca
      * @param title - Filtro da busca
      */
-    override fun onLoadMovies(title: String) {
+    override fun onLoadMovies(title: String, type: String) {
         if (title.trim().isNotEmpty()){
             // Verifica se é um emoji
             val _title = EmojiControler().emojiToText(title.trim())
 
             val webCliente = MovieServiceImpl()
-            webCliente.getMovieList(_title, PAGE.toString(), object : MovieServiceApi.MovieCallback<List<Movie>> {
+            webCliente.getMovieList(_title, PAGE.toString(), type, object : MovieServiceApi.MovieCallback<List<Movie>> {
                 override fun onLoaded(result: List<Movie>, totalItems: Int) {
                     if (PAGE == 1) {
                         view.displayMovies(result)

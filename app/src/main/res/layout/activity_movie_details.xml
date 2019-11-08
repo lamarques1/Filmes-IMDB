@@ -8,6 +8,9 @@
     android:visibility="visible"
     tools:context="com.example.filmesimdb.moviedetails.MovieDetailsView">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/custom_toolbar"/>
 
     <LinearLayout
         android:id="@+id/layout_movie_details"

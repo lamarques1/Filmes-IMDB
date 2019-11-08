@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmesimdb.R
@@ -15,6 +16,8 @@ import com.squareup.picasso.Picasso
 
 class MovieDetailsView : AppCompatActivity(),
     MovieDetailsContract.View {
+
+    private lateinit var toolbar : Toolbar
 
     private lateinit var imdbID : String
     private lateinit var txtTitle : TextView
@@ -37,12 +40,14 @@ class MovieDetailsView : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
-        supportActionBar!!.hide()
 
         imdbID = intent.getStringExtra("imdbID")!!
 
         setPresenter()
         initViews()
+
+        toolbar.title = "Details"
+        setSupportActionBar(toolbar)
 
         presenter.onLoadMovieDetails(imdbID)
     }
@@ -52,6 +57,8 @@ class MovieDetailsView : AppCompatActivity(),
     }
 
     override fun initViews() {
+        toolbar = findViewById(R.id.toolbar)
+
         txtTitle = findViewById(R.id.txtTitle)
         txtYear = findViewById(R.id.txtYear)
         txtRunTime = findViewById(R.id.txtRunTime)
@@ -110,6 +117,4 @@ class MovieDetailsView : AppCompatActivity(),
         Toast.makeText(this, errorId, Toast.LENGTH_LONG).show()
         onBackPressed()
     }
-
-
 }

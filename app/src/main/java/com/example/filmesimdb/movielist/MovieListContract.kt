@@ -13,6 +13,6 @@ class MovieListContract {
         fun displayErrorMessage(errorId: Int)
     }
     interface Presenter{
-        fun onLoadMovies(title: String)
+        fun onLoadMovies(title: String, type: String)
     }
 }

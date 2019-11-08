@@ -20,9 +20,10 @@ class MovieServiceImpl : MovieServiceApi {
     override fun getMovieList(
         title: String,
         page: String,
+        type: String,
         callback: MovieServiceApi.MovieCallback<List<Movie>>
     ) {
-        val callMovies = mRetrofit.list(title, page, "movie")
+        val callMovies = mRetrofit.list(title, page, type)
         callMovies.enqueue(object: Callback<MovieList>{
             override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
                 try {
