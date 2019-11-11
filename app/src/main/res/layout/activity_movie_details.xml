@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,16 +8,14 @@
     android:visibility="visible"
     tools:context="com.example.filmesimdb.moviedetails.MovieDetailsView">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/custom_toolbar"/>
-
     <LinearLayout
         android:id="@+id/layout_movie_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
+
+
 
         <ScrollView
             android:layout_width="match_parent"
@@ -30,16 +28,9 @@
                 android:isScrollContainer="true"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/txtTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16sp"
-                    android:gravity="center"
-                    android:text="@string/movie_title"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                <include
+                    android:id="@+id/toolbar"
+                    layout="@layout/custom_toolbar"/>
 
                 <ImageView
                     android:id="@+id/imgPoster"
@@ -49,6 +40,17 @@
                     android:layout_marginTop="16sp"
                     android:maxWidth="250sp"
                     android:src="@android:color/darker_gray" />
+
+                <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16sp"
+                    android:gravity="center"
+                    android:text="@string/movie_title"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -86,7 +88,9 @@
                             style="@style/Widget.AppCompat.RatingBar.Small"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:progressBackgroundTint="@color/colorDefaultText" />
+                            android:foregroundTint="@color/colorPrimary"
+                            android:progressBackgroundTint="@color/colorDefaultText"
+                            android:progressTint="@color/colorPrimary" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -95,7 +99,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="8sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
                     android:text="@string/movie_genre"
                     android:textColor="@color/colorDefaultText" />
 
@@ -254,4 +260,4 @@
     </LinearLayout>
 
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

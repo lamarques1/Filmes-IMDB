@@ -79,7 +79,7 @@ class MovieDetailsView : AppCompatActivity(),
     override fun displayMovieDetails(movie : MovieDetails) {
 
         layout.visibility = View.GONE
-
+        toolbar.title = movie.title
         txtTitle.text = movie.title
         txtYear.text = movie.year
         txtRunTime.text = movie.runtime

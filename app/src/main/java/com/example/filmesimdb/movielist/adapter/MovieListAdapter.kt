@@ -54,7 +54,6 @@ class MovieListAdapter (private val context: Context,
     }
 
     fun setOnBottomReachedListener(onBottomReachedListener: OnBottomReachedListener) {
-
         this.onBottomReachedListener = onBottomReachedListener
     }
 
