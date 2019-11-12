@@ -26,82 +26,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_movie"
-            android:text="Movie" />
+            android:text="@string/tab_movie" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_series"
-            android:text="Series" />
+            android:text="@string/tab_series" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_game"
-            android:text="Game" />
+            android:text="@string/tab_game" />
     </com.google.android.material.tabs.TabLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16sp"
-        android:text="@string/movie_list_activity_title"
-        android:textColor="@color/colorPrimary"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:visibility="gone" />
-
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16sp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <EditText
-            android:id="@+id/etTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/custom_edittext"
-            android:hint="@string/placeholder_search_movie"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorDefaultText" />
-
-        <ImageView
-            android:id="@+id/btnSearch"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:contentDescription="@string/button_search"
-            android:focusable="true"
-            app:srcCompat="@drawable/icon_search" />
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewMovies"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:visibility="gone">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/empty_state"
+            layout="@layout/empty_state"
+            android:visibility="visible" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewMovies"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:visibility="gone">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 
 
 </LinearLayout>

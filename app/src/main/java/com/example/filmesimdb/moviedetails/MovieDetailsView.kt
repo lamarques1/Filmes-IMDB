@@ -52,6 +52,11 @@ class MovieDetailsView : AppCompatActivity(),
         presenter.onLoadMovieDetails(imdbID)
     }
 
+    override fun onResume() {
+        super.onResume()
+        layout.visibility = View.GONE
+    }
+
     override fun setPresenter() {
         presenter = MovieDetailsPresenter(this)
     }
@@ -78,7 +83,6 @@ class MovieDetailsView : AppCompatActivity(),
      */
     override fun displayMovieDetails(movie : MovieDetails) {
 
-        layout.visibility = View.GONE
         toolbar.title = movie.title
         txtTitle.text = movie.title
         txtYear.text = movie.year

@@ -1,7 +1,5 @@
 package com.example.filmesimdb.movielist
 
-import android.app.SearchManager
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,23 +14,20 @@ import com.example.filmesimdb.R
 import com.example.filmesimdb.movielist.adapter.MovieListAdapter
 import com.example.filmesimdb.movielist.model.Movie
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.activity_movie_list.*
 
 class MovieListView : AppCompatActivity(), MovieListContract.View {
 
     private lateinit var toolbar : Toolbar
 
-    private lateinit var etTitle : EditText
     private lateinit var recyclerView: RecyclerView
-    private lateinit var btnSearch : ImageView
     private lateinit var adapter : MovieListAdapter
     private lateinit var presenter : MovieListPresenter
 
     private lateinit var tabLayout: TabLayout
-    private lateinit var textView: TextView
     private var searchType = "Movie"
     private var mQuery = ""
 
+    private lateinit var empty_state : View
     private lateinit var mSearch : MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +39,7 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
         initViews()
         initListeners()
 
+        empty_state.visibility = View.VISIBLE
         toolbar.title = "IMDb Search"
         setSupportActionBar(toolbar)
     }
@@ -57,7 +53,7 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
         mSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query?.isNotEmpty()!!){
-                    mQuery = query!!
+                    mQuery = query
                 }
                 presenter.resetPage()
                 presenter.onLoadMovies(query, searchType)
@@ -81,11 +77,9 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
     override fun initViews() {
         toolbar = findViewById(R.id.toolbar)
 
-        etTitle = findViewById(R.id.etTitle)
-        btnSearch = findViewById(R.id.btnSearch)
         recyclerView = findViewById(R.id.recyclerViewMovies)
+        empty_state = findViewById(R.id.empty_state)
 
-        textView = findViewById(R.id.textView)
         tabLayout = findViewById(R.id.tabLayout)
     }
 
@@ -103,7 +97,6 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
             }
 
             override fun onTabSelected(p0: TabLayout.Tab) {
-                Log.d("Teste", p0.position.toString())
                 searchType = p0.text.toString()
                 if (mQuery.isNotEmpty()){
                     presenter.resetPage()
@@ -112,17 +105,13 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
 
             }
         })
-
-        btnSearch.setOnClickListener {
-            presenter.resetPage()
-            presenter.onLoadMovies(etTitle.text.toString(), searchType)
-        }
     }
 
     /**
      * Exibe a lista de filmes recebida do presenter
      */
     override fun displayMovies(movies: List<Movie>) {
+        empty_state.visibility = View.GONE
         recyclerView.visibility = View.VISIBLE
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter =
@@ -139,7 +128,7 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
                 adapter.setOnBottomReachedListener(object :
                     MovieListAdapter.OnBottomReachedListener {
                     override fun onBottomReached(position: Int) {
-                        presenter.onLoadMovies(etTitle.text.toString(), searchType)
+                        presenter.onLoadMovies(mQuery, searchType)
                     }
                 })
             }
@@ -155,6 +144,8 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
      * @param errorId - Id da string de erro para exibição
      */
     override fun displayErrorMessage(errorId: Int) {
+        recyclerView.visibility = View.GONE
+        empty_state.visibility = View.VISIBLE
         Toast.makeText(this, errorId, Toast.LENGTH_SHORT).show()
     }
 }

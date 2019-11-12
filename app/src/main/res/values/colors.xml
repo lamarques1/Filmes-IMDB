@@ -7,4 +7,6 @@
     <color name="colorBackground">#222222</color>
     <color name="colorSectionLine">#535353</color>
     <color name="colorSurface">#303030</color>
+    <color name="colorFadedPrimaryDark">#99C07301</color>
+    <color name="colorFadedDefaultText">#99E0E0E0</color>
 </resources>

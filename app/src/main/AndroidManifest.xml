@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Main2Activity">
-
-        </activity>
 
         <activity android:name=".moviedetails.MovieDetailsView"
             android:parentActivityName=".movielist.MovieListView"/>

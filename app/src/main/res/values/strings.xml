@@ -24,4 +24,10 @@
     <string name="erro_carregar_filmes">Erro ao carregar os filmes!</string>
     <string name="erro_carregar_detalhes">Erro ao carregar os detalhes!</string>
     <string name="erro_filme_nao_encontrado">Filme não encontrado!</string>
+    <string name="empty_list">Empty List</string>
+    <string name="want_to_find_some_titles">Want to find some titles?</string>
+    <string name="try_a_search">Try a search…</string>
+    <string name="tab_movie">Movie</string>
+    <string name="tab_series">Series</string>
+    <string name="tab_game">Game</string>
 </resources>
