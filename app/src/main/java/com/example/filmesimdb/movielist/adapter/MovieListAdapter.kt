@@ -69,14 +69,12 @@ class MovieListAdapter (private val context: Context,
             itemView.visibility = View.GONE
 
             val title = itemView.txtTitle
-            val type = itemView.txtType
             val year = itemView.txtYear
             val poster = itemView.imgPoster
             val posterUri = Uri.parse(movie.poster)
             val colorDrawable = ColorDrawable(0xFFFFFF)
 
             title.text = movie.title
-            type.text = movie.type
             year.text = movie.year
             Picasso.get()
                 .load(posterUri)

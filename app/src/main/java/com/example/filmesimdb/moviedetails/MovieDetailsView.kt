@@ -33,7 +33,7 @@ class MovieDetailsView : BaseActivity(),
     private lateinit var layout : LinearLayout
 
     private lateinit var adapter : MovieDetailsAdapter
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView : RecyclerView
 
     private lateinit var presenter : MovieDetailsContract.Presenter
 
@@ -52,11 +52,6 @@ class MovieDetailsView : BaseActivity(),
         showProgress(true)
 
         presenter.onLoadMovieDetails(imdbID)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        layout.visibility = View.GONE
     }
 
     override fun setPresenter() {

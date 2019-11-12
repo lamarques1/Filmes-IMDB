@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmesimdb.R
@@ -22,7 +23,7 @@ class MovieListView : BaseActivity(), MovieListContract.View {
     private lateinit var adapter : MovieListAdapter
     private lateinit var presenter : MovieListPresenter
 
-    private lateinit var tabLayout: TabLayout
+    private lateinit var tabLayout : TabLayout
     private var searchType = "Movie"
     private var mQuery = ""
 
@@ -100,6 +101,7 @@ class MovieListView : BaseActivity(), MovieListContract.View {
                 searchType = p0.text.toString()
                 if (mQuery.isNotEmpty()){
                     presenter.resetPage()
+                    showProgress(true)
                     presenter.onLoadMovies(mQuery, searchType)
                 }
 
@@ -113,10 +115,12 @@ class MovieListView : BaseActivity(), MovieListContract.View {
     override fun displayMovies(movies: List<Movie>) {
         empty_state.visibility = View.GONE
         recyclerView.visibility = View.VISIBLE
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
         adapter =
             MovieListAdapter(applicationContext, movies)
         recyclerView.adapter = adapter
+
+        showProgress(false)
 
         /**
          * Scroll Infinito
@@ -133,7 +137,7 @@ class MovieListView : BaseActivity(), MovieListContract.View {
                 })
             }
         })
-        showProgress(false)
+
     }
 
     override fun getAdapter() : MovieListAdapter{

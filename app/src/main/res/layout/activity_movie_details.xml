@@ -13,8 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="visible">
-
+        android:visibility="gone">
 
 
         <ScrollView
@@ -30,7 +29,7 @@
 
                 <include
                     android:id="@+id/toolbar"
-                    layout="@layout/custom_toolbar"/>
+                    layout="@layout/custom_toolbar" />
 
                 <ImageView
                     android:id="@+id/imgPoster"
