@@ -30,4 +30,5 @@
     <string name="tab_movie">Movie</string>
     <string name="tab_series">Series</string>
     <string name="tab_game">Game</string>
+    <string name="progress_aguarde">Aguarde…</string>
 </resources>

@@ -1,8 +1,6 @@
 package com.example.filmesimdb.movielist
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -13,9 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.filmesimdb.R
 import com.example.filmesimdb.movielist.adapter.MovieListAdapter
 import com.example.filmesimdb.movielist.model.Movie
+import com.example.filmesimdb.utils.BaseActivity
 import com.google.android.material.tabs.TabLayout
 
-class MovieListView : AppCompatActivity(), MovieListContract.View {
+class MovieListView : BaseActivity(), MovieListContract.View {
 
     private lateinit var toolbar : Toolbar
 
@@ -55,6 +54,7 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
                 if (query?.isNotEmpty()!!){
                     mQuery = query
                 }
+                showProgress(true)
                 presenter.resetPage()
                 presenter.onLoadMovies(query, searchType)
                 mSearchView.onHoverChanged(false)
@@ -133,6 +133,7 @@ class MovieListView : AppCompatActivity(), MovieListContract.View {
                 })
             }
         })
+        showProgress(false)
     }
 
     override fun getAdapter() : MovieListAdapter{

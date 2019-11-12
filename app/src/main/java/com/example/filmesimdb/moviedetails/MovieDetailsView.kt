@@ -1,8 +1,8 @@
 package com.example.filmesimdb.moviedetails
 
+import android.app.ProgressDialog
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -12,9 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.filmesimdb.R
 import com.example.filmesimdb.moviedetails.adapter.MovieDetailsAdapter
 import com.example.filmesimdb.moviedetails.model.MovieDetails
+import com.example.filmesimdb.utils.BaseActivity
 import com.squareup.picasso.Picasso
 
-class MovieDetailsView : AppCompatActivity(),
+class MovieDetailsView : BaseActivity(),
     MovieDetailsContract.View {
 
     private lateinit var toolbar : Toolbar
@@ -45,9 +46,11 @@ class MovieDetailsView : AppCompatActivity(),
 
         setPresenter()
         initViews()
+        initListeners()
 
         toolbar.title = "Details"
         setSupportActionBar(toolbar)
+        showProgress(true)
 
         presenter.onLoadMovieDetails(imdbID)
     }
@@ -63,6 +66,7 @@ class MovieDetailsView : AppCompatActivity(),
 
     override fun initViews() {
         toolbar = findViewById(R.id.toolbar)
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24px)
 
         txtTitle = findViewById(R.id.txtTitle)
         txtYear = findViewById(R.id.txtYear)
@@ -76,6 +80,12 @@ class MovieDetailsView : AppCompatActivity(),
         imgPoster = findViewById(R.id.imgPoster)
         recyclerView = findViewById(R.id.recyclerViewRatings)
         layout = findViewById(R.id.layout_movie_details)
+    }
+
+    private fun initListeners() {
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 
     /**
@@ -111,6 +121,7 @@ class MovieDetailsView : AppCompatActivity(),
         recyclerView.adapter = adapter
 
         layout.visibility = View.VISIBLE
+        showProgress(false)
     }
 
     /**
