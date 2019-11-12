@@ -147,6 +147,7 @@ class MovieListView : BaseActivity(), MovieListContract.View {
     override fun displayErrorMessage(errorId: Int) {
         recyclerView.visibility = View.GONE
         empty_state.visibility = View.VISIBLE
+        showProgress(false)
         Toast.makeText(this, errorId, Toast.LENGTH_SHORT).show()
     }
 }

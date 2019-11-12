@@ -8,6 +8,7 @@ class MovieDetailsContract {
         fun displayMovieDetails(movie : MovieDetails)
         fun displayErrorMessage(errorId : Int)
         fun setPresenter()
+        fun initListeners()
     }
     interface Presenter{
         fun onLoadMovieDetails(imdbID : String)

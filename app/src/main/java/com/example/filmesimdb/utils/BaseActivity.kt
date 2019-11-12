@@ -11,10 +11,6 @@ import com.example.filmesimdb.R
 open class BaseActivity : AppCompatActivity() {
     private lateinit var progressDialog:ProgressDialog
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     fun showProgress(show: Boolean) {
         if (show) {
             progressDialog = ProgressDialog.show(this, "", getString(R.string.progress_aguarde))

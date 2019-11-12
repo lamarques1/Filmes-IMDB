@@ -1,6 +1,5 @@
 package com.example.filmesimdb.moviedetails
 
-import android.app.ProgressDialog
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
@@ -82,7 +81,7 @@ class MovieDetailsView : BaseActivity(),
         layout = findViewById(R.id.layout_movie_details)
     }
 
-    private fun initListeners() {
+    override fun initListeners() {
         toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
@@ -130,6 +129,6 @@ class MovieDetailsView : BaseActivity(),
      */
     override fun displayErrorMessage(errorId: Int) {
         Toast.makeText(this, errorId, Toast.LENGTH_LONG).show()
-        onBackPressed()
+        showProgress(false)
     }
 }
