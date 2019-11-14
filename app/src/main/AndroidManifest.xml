@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.filmesimdb">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".utils.BaseActivity"></activity>
+        <activity android:name=".utils.BaseActivity"/>
         <activity
             android:name=".moviedetails.MovieDetailsView"
             android:parentActivityName=".movielist.MovieListView" />

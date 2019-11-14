@@ -14,7 +14,7 @@ class MovieDetailsAdapter(private val context: Context,
     : RecyclerView.Adapter<MovieDetailsAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_rating, null)
-        return ViewHolder(view);
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {

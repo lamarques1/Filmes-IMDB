@@ -12,7 +12,6 @@ import com.example.filmesimdb.R
 import com.example.filmesimdb.moviedetails.MovieDetailsView
 import com.example.filmesimdb.movielist.model.Movie
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_filme.view.*
 import kotlinx.android.synthetic.main.item_filme.view.imgPoster
 import kotlinx.android.synthetic.main.item_filme.view.txtTitle
 import kotlinx.android.synthetic.main.item_filme.view.txtYear

@@ -1,6 +1,6 @@
 package com.example.filmesimdb.movielist.controller
 
-class EmojiControler {
+class EmojiController {
 
     /**
      * Caso reconheça algum emoji, retorna o titulo do filme correspondente

@@ -1,6 +1,6 @@
 package com.example.filmesimdb.movielist
 
-import com.example.filmesimdb.movielist.controller.EmojiControler
+import com.example.filmesimdb.movielist.controller.EmojiController
 import com.example.filmesimdb.movielist.model.Movie
 import com.example.filmesimdb.service.MovieServiceApi
 import com.example.filmesimdb.service.MovieServiceImpl
@@ -20,7 +20,7 @@ class MovieListPresenter(val view : MovieListContract.View) :
     override fun onLoadMovies(title: String, type: String) {
         if (title.trim().isNotEmpty()){
             // Verifica se é um emoji
-            val _title = EmojiControler().emojiToText(title.trim())
+            val _title = EmojiController().emojiToText(title.trim())
 
             val webCliente = MovieServiceImpl()
             webCliente.getMovieList(_title, PAGE.toString(), type, object : MovieServiceApi.MovieCallback<List<Movie>> {
@@ -40,9 +40,6 @@ class MovieListPresenter(val view : MovieListContract.View) :
                     if (PAGE == 1){
                         view.displayErrorMessage(errorId)
                     }
-                }
-                override fun onLoaded(result: List<Movie>) {
-                    // Not implemented
                 }
             })
         }

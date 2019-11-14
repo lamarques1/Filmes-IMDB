@@ -11,24 +11,52 @@
     <string name="movie_writers">Writer 1, Writer 2</string>
     <string name="actors">Actors: </string>
     <string name="movie_actors">Actor 1, Actor 2, Actor 3, Actor 4, Actor 5</string>
-    <string name="placeholder_search_movie">Digite o título do filme</string>
-    <string name="btn_search">Buscar</string>
+    <string name="genres">Genres</string>
+    <string name="movie_released">01 Jan 2019</string>
+    <string name="language">Language</string>
+    <string name="movie_language">English</string>
+    <string name="country">Country</string>
+    <string name="movie_country">USA, Canada</string>
+    <string name="movie_awards">NA</string>
+    <string name="awards">Awards</string>
+    <string name="production">Production</string>
+    <string name="movie_production">Warner Bros. Pictures</string>
     <string name="plot">Plot</string>
     <string name="ratings">Ratings</string>
     <string name="movie_type">type</string>
-    <string name="movie_list_activity_title">Filmes IMDB</string>
-    <string name="button_search">Button Search</string>
     <string name="movie_poster">Movie Poster</string>
 
     <!-- Erros -->
     <string name="erro_carregar_filmes">Erro ao carregar os filmes!</string>
     <string name="erro_carregar_detalhes">Erro ao carregar os detalhes!</string>
     <string name="erro_filme_nao_encontrado">Filme não encontrado!</string>
+    <string name="erro_carregar_temporadas">Erro ao carregar as temporadas!</string>
+
     <string name="empty_list">Empty List</string>
     <string name="want_to_find_some_titles">Want to find some titles?</string>
     <string name="try_a_search">Try a search…</string>
+
     <string name="tab_movie">Movie</string>
     <string name="tab_series">Series</string>
     <string name="tab_game">Game</string>
+
     <string name="progress_aguarde">Aguarde…</string>
+
+    <string name="tab_more_details">More Details</string>
+    <string name="tab_episodes">Episodes</string>
+
+    <string name="placeholder_search_movie">Digite o título do filme</string>
+    <string name="btn_search">Buscar</string>
+    <string name="movie_list_activity_title">Filmes IMDB</string>
+    <string name="button_search">Button Search</string>
+
+
+    <string name="hashtag">#</string>
+    <string name="episode_number">10</string>
+    <string name="episode_title">Winter Is Coming</string>
+    <string name="episode_released">2011–04–17</string>
+    <string name="imdb">IMDb</string>
+    <string name="episode_rating">8.7</string>
+
+
 </resources>

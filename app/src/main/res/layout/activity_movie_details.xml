@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBackground"
     android:visibility="visible"
     tools:context="com.example.filmesimdb.moviedetails.MovieDetailsView">
@@ -13,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
 
         <ScrollView
@@ -33,230 +34,419 @@
 
                 <ImageView
                     android:id="@+id/imgPoster"
-                    android:layout_width="250sp"
-                    android:layout_height="350sp"
+                    android:layout_width="250dp"
+                    android:layout_height="350dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="16sp"
-                    android:maxWidth="250sp"
+                    android:layout_marginTop="16dp"
+                    android:maxWidth="250dp"
                     android:src="@android:color/darker_gray" />
 
                 <TextView
                     android:id="@+id/txtTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16sp"
+                    android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="@string/movie_title"
                     android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8sp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/txtYear"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:text="@string/movie_year"
-                            android:textColor="@color/colorDefaultText" />
-
-                        <TextView
-                            android:id="@+id/txtRunTime"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:text="@string/movie_runtime"
-                            android:textColor="@color/colorDefaultText" />
-
-                        <RatingBar
-                            android:id="@+id/ratingBar"
-                            style="@style/Widget.AppCompat.RatingBar.Small"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:foregroundTint="@color/colorPrimary"
-                            android:progressBackgroundTint="@color/colorDefaultText"
-                            android:progressTint="@color/colorPrimary" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/txtGenre"
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/movie_genre"
-                    android:textColor="@color/colorDefaultText" />
-
-                <TextView
-                    android:id="@+id/plot"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24sp"
-                    android:gravity="center"
-                    android:text="@string/plot"
-                    android:textColor="@color/colorDefaultText"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:foregroundTint="@color/colorPrimary"
+                    android:progressBackgroundTint="@color/colorDefaultText"
+                    android:progressTint="@color/colorPrimary" />
 
                 <LinearLayout
-                    android:id="@+id/SectionLine"
-                    android:layout_width="match_parent"
-                    android:layout_height="1sp"
-                    android:background="@color/colorSectionLine"
-                    android:orientation="horizontal" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/movie_year"
+                        android:textColor="@color/colorDefaultText" />
+
+                    <TextView
+                        android:id="@+id/txtRunTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/movie_runtime"
+                        android:textColor="@color/colorDefaultText" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/txtPlot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="4sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
                     android:text="@string/movie_plot"
                     android:textColor="@color/colorDefaultText" />
 
-                <TextView
-                    android:id="@+id/others"
-                    android:layout_width="match_parent"
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24sp"
-                    android:gravity="center"
-                    android:text="Others"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
                     android:textColor="@color/colorDefaultText"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:visibility="visible" />
 
                 <LinearLayout
-                    android:id="@+id/SectionLine2"
                     android:layout_width="match_parent"
-                    android:layout_height="1sp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@color/colorSectionLine"
                     android:orientation="horizontal" />
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/more_details_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/tab_more_details"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayoutDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="16sp"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorSurface"
+                    android:visibility="visible"
+                    app:tabIndicator="@android:color/black"
+                    app:tabIndicatorColor="@color/colorAccent"
+                    app:tabInlineLabel="true"
+                    app:tabSelectedTextColor="@color/colorPrimary"
+                    app:tabTextColor="@color/colorDefaultText">
 
-                    <TextView
-                        android:id="@+id/tvdtr"
+                    <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:icon="@drawable/ic_keyboard_arrow_down_24px"
+                        android:text="@string/tab_episodes" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:icon="@drawable/ic_keyboard_arrow_down_24px"
+                        android:text="@string/tab_more_details" />
+                </com.google.android.material.tabs.TabLayout>
+
+                <LinearLayout
+                    android:id="@+id/episodes_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewEpisodes"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/more_details_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tvgen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/genres"
+                        android:textColor="@color/colorDefaultText"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtGenre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/movie_genre"
+                        android:textColor="@color/colorDefaultTextFaded" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorSectionLine"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:id="@+id/tvdir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
                         android:text="@string/director"
-                        android:textColor="@color/colorDefaultText" />
+                        android:textColor="@color/colorDefaultText"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtDirector"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="2sp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="16dp"
                         android:text="@string/movie_director"
-                        android:textColor="@color/colorDefaultText" />
+                        android:textColor="@color/colorDefaultTextFaded" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="8sp"
-                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorSectionLine"
+                        android:orientation="horizontal" />
 
                     <TextView
-                        android:id="@+id/tvwrt"
+                        android:id="@+id/tvwri"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
                         android:text="@string/writers"
-                        android:textColor="@color/colorDefaultText" />
+                        android:textColor="@color/colorDefaultText"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtWriter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="2sp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="16dp"
                         android:text="@string/movie_writers"
-                        android:textColor="@color/colorDefaultText" />
+                        android:textColor="@color/colorDefaultTextFaded" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="8sp"
-                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorSectionLine"
+                        android:orientation="horizontal" />
 
                     <TextView
                         android:id="@+id/tvact"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
                         android:text="@string/actors"
-                        android:textColor="@color/colorDefaultText" />
+                        android:textColor="@color/colorDefaultText"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtActors"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="2sp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="16dp"
                         android:text="@string/movie_actors"
-                        android:textColor="@color/colorDefaultText" />
+                        android:textColor="@color/colorDefaultTextFaded" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorSectionLine"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:id="@+id/tvrel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Released"
+                        android:textColor="@color/colorDefaultText"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtReleased"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/movie_released"
+                        android:textColor="@color/colorDefaultTextFaded" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorSectionLine"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:id="@+id/tvlan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/language"
+                        android:textColor="@color/colorDefaultText"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtLanguage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/movie_language"
+                        android:textColor="@color/colorDefaultTextFaded" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorSectionLine"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:id="@+id/tvcou"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/country"
+                        android:textColor="@color/colorDefaultText"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtCountry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/movie_country"
+                        android:textColor="@color/colorDefaultTextFaded" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorSectionLine"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:id="@+id/tvawa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/awards"
+                        android:textColor="@color/colorDefaultText"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtAwards"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/movie_awards"
+                        android:textColor="@color/colorDefaultTextFaded" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorSectionLine"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:id="@+id/tvpro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/production"
+                        android:textColor="@color/colorDefaultText"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtProdution"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/movie_production"
+                        android:textColor="@color/colorDefaultTextFaded" />
+
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/colorSectionLine"
                     android:orientation="horizontal" />
 
                 <TextView
                     android:id="@+id/ratings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24sp"
                     android:gravity="center"
                     android:text="@string/ratings"
                     android:textColor="@color/colorDefaultText"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <LinearLayout
-                    android:id="@+id/SectionLine3"
-                    android:layout_width="match_parent"
-                    android:layout_height="1sp"
-                    android:background="@color/colorSectionLine"
-                    android:orientation="horizontal" />
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewRatings"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="8sp"
-                    android:layout_marginEnd="16sp"
-                    android:layout_marginBottom="16sp" />
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp" />
 
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>
