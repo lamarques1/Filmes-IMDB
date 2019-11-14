@@ -1,5 +1,6 @@
 package com.example.filmesimdb.moviedetails
 
+import com.example.filmesimdb.moviedetails.adapter.EpisodeListAdapter
 import com.example.filmesimdb.moviedetails.model.MovieDetails
 import com.example.filmesimdb.moviedetails.model.Season
 
@@ -11,10 +12,12 @@ class MovieDetailsContract {
         fun displayErrorMessage(errorId : Int)
         fun showTabs(show : Boolean)
         fun setPresenter()
+        fun getEpisodeAdapter() : EpisodeListAdapter
         fun initListeners()
     }
     interface Presenter{
-        fun onLoadMovieDetails(imdbID : String)
-        fun onLoadSeasonInfo(imdbID: String, season: String)
+        fun onLoadMovieDetails(imdbId : String)
+        fun onLoadSeasonInfo(imdbId: String, season: String)
+        fun onUpdateEpisodeList(imdbId: String, season: String)
     }
 }

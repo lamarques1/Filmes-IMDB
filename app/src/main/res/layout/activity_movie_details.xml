@@ -39,7 +39,8 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
                     android:maxWidth="250dp"
-                    android:src="@android:color/darker_gray" />
+                    android:src="@android:color/darker_gray"
+                    android:contentDescription="@string/movie_poster" />
 
                 <TextView
                     android:id="@+id/txtTitle"
@@ -99,7 +100,7 @@
                     android:text="@string/movie_plot"
                     android:textColor="@color/colorDefaultText" />
 
-                <Spinner
+                <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -143,7 +144,7 @@
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:icon="@drawable/ic_keyboard_arrow_down_24px"
+                        android:icon="@drawable/ic_keyboard_arrow_up_24px"
                         android:text="@string/tab_episodes" />
 
                     <com.google.android.material.tabs.TabItem
@@ -292,7 +293,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="Released"
+                        android:text="@string/released"
                         android:textColor="@color/colorDefaultText"
                         android:textSize="16sp"
                         android:textStyle="bold" />

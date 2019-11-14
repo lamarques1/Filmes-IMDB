@@ -57,6 +57,7 @@
     <string name="episode_released">2011–04–17</string>
     <string name="imdb">IMDb</string>
     <string name="episode_rating">8.7</string>
+    <string name="released">Released</string>
 
 
 </resources>

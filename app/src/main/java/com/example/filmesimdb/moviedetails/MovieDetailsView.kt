@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.appcompat.widget.AppCompatSpinner
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,14 +17,13 @@ import com.example.filmesimdb.moviedetails.model.Season
 import com.example.filmesimdb.utils.BaseActivity
 import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_spinner.*
 
 class MovieDetailsView : BaseActivity(),
     MovieDetailsContract.View {
 
     private lateinit var toolbar : Toolbar
 
-    private lateinit var imdbID : String
+    private lateinit var imdbId : String
     private lateinit var txtTitle : TextView
     private lateinit var txtYear : TextView
     private lateinit var txtRunTime : TextView
@@ -50,11 +50,9 @@ class MovieDetailsView : BaseActivity(),
     private lateinit var adapter : MovieDetailsAdapter
     private lateinit var recyclerViewRatings : RecyclerView
 
-    private lateinit var spinner : Spinner
+    private lateinit var spinner : AppCompatSpinner
     private lateinit var adapterEpisode: EpisodeListAdapter
     private lateinit var recyclerViewEpisodes: RecyclerView
-
-    private var selecSeason = ""
 
     private lateinit var presenter : MovieDetailsContract.Presenter
 
@@ -62,7 +60,7 @@ class MovieDetailsView : BaseActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
 
-        imdbID = intent.getStringExtra("imdbID")!!
+        imdbId = intent.getStringExtra("imdbID")!!
 
         setPresenter()
         initViews()
@@ -72,7 +70,7 @@ class MovieDetailsView : BaseActivity(),
         setSupportActionBar(toolbar)
         showProgress(true)
 
-        presenter.onLoadMovieDetails(imdbID)
+        presenter.onLoadMovieDetails(imdbId)
 
     }
 
@@ -163,8 +161,23 @@ class MovieDetailsView : BaseActivity(),
             }
         })
 
-        //TODO: Inserir spinner listener
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                return
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                presenter.onUpdateEpisodeList(imdbId, "${position+1}" )
+            }
+
+        }
     }
+
 
     /**
      * Exibe os detalhes do filme recebidos do presenter
@@ -243,24 +256,6 @@ class MovieDetailsView : BaseActivity(),
         }
     }
 
-
-/*    fun showTab(tabItem: TabLayout.Tab, show: Boolean){
-        when(tabItem.position){
-             0 -> {
-                 if (show)
-                     layoutEpisodes.visibility = View.VISIBLE
-                 else
-                     layoutEpisodes.visibility = View.GONE
-             }
-             1 -> {
-                 if (show)
-                     layoutDetails.visibility = View.VISIBLE
-                 else
-                     layoutDetails.visibility = View.GONE
-             }
-        }
-    }*/
-
     /**
      * Caso a busca falhe, exibe uma mensagem de erro
      * @param errorId - Id da string de erro para exibição
@@ -268,5 +263,9 @@ class MovieDetailsView : BaseActivity(),
     override fun displayErrorMessage(errorId: Int) {
         Toast.makeText(this, errorId, Toast.LENGTH_LONG).show()
         showProgress(false)
+    }
+
+    override fun getEpisodeAdapter(): EpisodeListAdapter{
+        return adapterEpisode
     }
 }

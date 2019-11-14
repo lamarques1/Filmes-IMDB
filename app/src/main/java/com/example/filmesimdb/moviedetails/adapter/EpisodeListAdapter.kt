@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.item_episode.view.*
 
 class EpisodeListAdapter (
     private val context: Context,
-    private val episodes: List<Episodes>) : RecyclerView.Adapter<EpisodeListAdapter.ViewHolder>() {
+    private var episodes: List<Episodes>) : RecyclerView.Adapter<EpisodeListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_episode, null)
@@ -21,6 +21,10 @@ class EpisodeListAdapter (
 
     override fun getItemCount(): Int {
         return episodes.size
+    }
+
+    fun updateList(newEpisodes: List<Episodes>){
+        episodes = newEpisodes
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

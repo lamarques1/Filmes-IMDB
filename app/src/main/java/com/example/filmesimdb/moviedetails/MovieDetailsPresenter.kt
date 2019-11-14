@@ -40,11 +40,31 @@ class MovieDetailsPresenter(val view: MovieDetailsContract.View) :
      * @param imdbId - Id da serie
      * @param season - Numero da temporada desejada
      */
-    override fun onLoadSeasonInfo(imdbID: String, season: String) {
+    override fun onLoadSeasonInfo(imdbId: String, season: String) {
         val webClient = MovieServiceImpl()
-        webClient.getSeason(imdbID, season, object : MovieServiceApi.MovieDetailsCallback<Season> {
+        webClient.getSeason(imdbId, season, object : MovieServiceApi.MovieDetailsCallback<Season> {
             override fun onLoaded(result: Season) {
                 view.displaySeasonInfo(result)
+            }
+
+            override fun onError(errorId: Int) {
+                view.displayErrorMessage(errorId)
+            }
+
+        })
+    }
+
+    /**
+     * Busca uma lista de episódios de uma temporada espeficica e atualiza o adapter da view.
+     * @param imdbId - Id da serie
+     * @param season - Numero da temporada desejada
+     */
+    override fun onUpdateEpisodeList(imdbId: String, season: String) {
+        val webClient = MovieServiceImpl()
+        webClient.getSeason(imdbId, season, object : MovieServiceApi.MovieDetailsCallback<Season> {
+            override fun onLoaded(result: Season) {
+                view.getEpisodeAdapter().updateList(result.episodes)
+                view.getEpisodeAdapter().notifyDataSetChanged()
             }
 
             override fun onError(errorId: Int) {
