@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
 
         <ScrollView
@@ -38,9 +38,9 @@
                     android:layout_height="350dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
+                    android:contentDescription="@string/movie_poster"
                     android:maxWidth="250dp"
-                    android:src="@android:color/darker_gray"
-                    android:contentDescription="@string/movie_poster" />
+                    android:src="@android:color/darker_gray" />
 
                 <TextView
                     android:id="@+id/txtTitle"
@@ -67,8 +67,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:gravity="center"
                     android:layout_marginTop="8dp"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <TextView

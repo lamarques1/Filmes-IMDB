@@ -48,6 +48,7 @@ class MovieListAdapter (private val context: Context,
         holder.itemView.setOnClickListener {
             val detailsIntent = Intent(context, MovieDetailsView::class.java)
             detailsIntent.putExtra("imdbID", movies[position].imdbID)
+            detailsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(detailsIntent)
         }
     }

@@ -54,6 +54,7 @@ class MovieListView : BaseActivity(), MovieListContract.View {
                 if (query?.isNotEmpty()!!){
                     mQuery = query
                 }
+                hideKeyboard(mSearchView)
                 showProgress(true)
                 presenter.resetPage()
                 presenter.onLoadMovies(query, searchType)
