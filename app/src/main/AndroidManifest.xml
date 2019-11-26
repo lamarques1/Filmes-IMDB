@@ -17,8 +17,14 @@
         <activity android:name=".utils.BaseActivity"/>
         <activity
             android:name=".moviedetails.MovieDetailsView"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
             android:parentActivityName=".movielist.MovieListView" />
-        <activity android:name=".movielist.MovieListView">
+        <activity
+            android:name=".movielist.MovieListView"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
